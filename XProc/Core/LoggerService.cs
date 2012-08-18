@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace IGilham.Xproc.Core
+namespace IGilham.XProc.Core
 {
     /// <summary>
     /// A static Factory class for managing access to the logger.

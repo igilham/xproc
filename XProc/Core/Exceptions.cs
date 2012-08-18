@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace IGilham.Xproc.Core
+namespace IGilham.XProc.Core
 {
     /// <summary>
     /// The base exception class in XProc.

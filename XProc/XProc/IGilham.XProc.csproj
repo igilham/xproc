@@ -54,9 +54,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\IGilham.Xproc.Core.csproj">
+    <ProjectReference Include="..\Core\IGilham.XProc.Core.csproj">
       <Project>{A303AB8F-7A6A-4451-ACF4-32624ACB9D88}</Project>
-      <Name>IGilham.Xproc.Core</Name>
+      <Name>IGilham.XProc.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

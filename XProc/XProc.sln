@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGilham.XProc", "XProc\IGilham.XProc.csproj", "{D1E05111-0688-4831-B684-9F35F9955FDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGilham.Xproc.Core", "Core\IGilham.Xproc.Core.csproj", "{A303AB8F-7A6A-4451-ACF4-32624ACB9D88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGilham.XProc.Core", "Core\IGilham.XProc.Core.csproj", "{A303AB8F-7A6A-4451-ACF4-32624ACB9D88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGilham.XProc.UnitTest", "CoreUnitTest\IGilham.XProc.UnitTest.csproj", "{645181CC-7828-428F-9287-AF054CB3CC74}"
 EndProject

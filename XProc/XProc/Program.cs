@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using IGilham.Xproc.Core;
+using IGilham.XProc.Core;
 
 // Apparently XProc is the name of a W3C tool. Never mind.
 namespace IGilham.XProc

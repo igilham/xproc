@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Xsl;
 
-namespace IGilham.Xproc.Core
+namespace IGilham.XProc.Core
 {
     /// <summary>
     /// A simple class wrapping the standard .Net library XSL transform API.

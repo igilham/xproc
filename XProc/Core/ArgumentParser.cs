@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace IGilham.XProc
+namespace IGilham.XProc.Core
 {
     /// <summary>
     /// A command line argument parser.
@@ -48,8 +48,10 @@ namespace IGilham.XProc
         /// <returns>True if the command line is successfully parsed, false otherwise.</returns>
         public bool Parse(params string[] args)
         {
+            var log = LoggerService.GetLogger();
             if (args.Length != 4)
             {
+                log.Error("Incorrect argument count while parsing the command line");
                 return false;
             }
             try
@@ -57,13 +59,15 @@ namespace IGilham.XProc
                 inputPath_ = new DirectoryInfo(args[1]);
                 if (!inputPath_.Exists)
                 {
+                    log.Error(string.Concat("No such directory: ", inputPath_.FullName));
                     return false;
                 }
                 outputPath_ = new DirectoryInfo(args[2]);
                 stylesheet_ = new FileInfo(args[3]);
             }
-            catch (IOException)
+            catch (IOException e)
             {
+                log.Error(string.Concat("IOException caught while parsing the command line: ", e.Message));
                 return false;
             }
             return true;

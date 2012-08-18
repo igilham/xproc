@@ -7,7 +7,7 @@ using System.Text;
 using System.IO;
 using System.Xml.XPath;
 
-namespace IGilham.Xproc.Core
+namespace IGilham.XProc.Core
 {
     /// <summary>
     /// Simple batch processor for XSL transforms.
@@ -25,7 +25,7 @@ namespace IGilham.Xproc.Core
             var log = LoggerService.GetLogger();
             if (!outputDir.Exists)
             {
-                log.Debug(string.Format("Creating output directory: {}", outputDir.FullName));
+                log.Debug(string.Concat("Creating output directory: ", outputDir.FullName));
                 try
                 {
                     outputDir.Create();

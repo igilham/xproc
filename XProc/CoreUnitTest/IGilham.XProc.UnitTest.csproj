@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgumentParserTest.cs" />
+    <Compile Include="BatcherTest.cs" />
     <Compile Include="TestUtilities.cs" />
     <Compile Include="XslTransformTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,16 +63,14 @@
     <Content Include="TestData\Input\hello.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\catalog.xsl" />
+    <Content Include="TestData\catalog.xsl">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\IGilham.Xproc.Core.csproj">
+    <ProjectReference Include="..\Core\IGilham.XProc.Core.csproj">
       <Project>{A303AB8F-7A6A-4451-ACF4-32624ACB9D88}</Project>
-      <Name>IGilham.Xproc.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XProc\IGilham.XProc.csproj">
-      <Project>{D1E05111-0688-4831-B684-9F35F9955FDE}</Project>
-      <Name>IGilham.XProc</Name>
+      <Name>IGilham.XProc.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

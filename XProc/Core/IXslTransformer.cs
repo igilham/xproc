@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Xml.XPath;
 
-namespace IGilham.Xproc.Core
+namespace IGilham.XProc.Core
 {
     public interface IXslTransformer
     {

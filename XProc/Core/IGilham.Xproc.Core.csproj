@@ -8,7 +8,7 @@
     <ProjectGuid>{A303AB8F-7A6A-4451-ACF4-32624ACB9D88}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IGilham.Xproc.Core</RootNamespace>
+    <RootNamespace>IGilham.XProc.Core</RootNamespace>
     <AssemblyName>Core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

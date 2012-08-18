@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using IGilham.XProc;
 using NUnit.Framework;
-using IGilham.Xproc.Core;
+using IGilham.XProc.Core;
 
 namespace IGilham.XProc.UnitTest
 {
@@ -16,9 +16,11 @@ namespace IGilham.XProc.UnitTest
         [Test]
         public void EnsureTestDataAvailable()
         {
-            Assert.IsTrue(TestUtilities.TestData.Exists);
-            Assert.IsTrue(TestUtilities.Input.Exists);
-            Assert.IsTrue(TestUtilities.Catalog.Exists);
+            Assert.That(TestUtilities.TestData.Exists);
+            Assert.That(TestUtilities.Input.Exists);
+            Assert.That(TestUtilities.Catalog.Exists);
+            Assert.That(TestUtilities.CatalogXsl.Exists);
+            Assert.That(TestUtilities.BlankXsl.Exists);
         }
 
         [Test]
@@ -29,10 +31,10 @@ namespace IGilham.XProc.UnitTest
             var input = new FileInfo(Path.Combine(TestUtilities.Input.FullName, "hello.xml"));
             var result = TestUtilities.GetTempFile("xml");
             tran.Transform(input.FullName, result.FullName);
-            Assert.AreEqual(input.Length, result.Length);
+            Assert.AreEqual(input.Length, result.Length, "File lengths differ");
             var expectedText = TestUtilities.GetText(input);
             var resultText = TestUtilities.GetText(result);
-            Assert.AreEqual(expectedText, resultText);
+            Assert.AreEqual(expectedText, resultText, "File text contents differ");
         }
     }
 }

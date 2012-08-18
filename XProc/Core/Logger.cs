@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace IGilham.Xproc.Core
+namespace IGilham.XProc.Core
 {
     /// <summary>
     /// Log Level indicator used by the logger
@@ -121,7 +121,7 @@ namespace IGilham.Xproc.Core
 
         private void Log(string prefix, string message)
         {
-            Console.Error.WriteLine(prefix + message);
+            Console.Error.WriteLine(string.Concat(prefix, message));
         }
     }
 }
