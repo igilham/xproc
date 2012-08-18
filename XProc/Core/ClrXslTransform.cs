@@ -25,11 +25,11 @@ namespace IGilham.Xproc.Core
             try
             {
                 transform_.Load(stylesheetUri);
-                log.Debug(string.Format("Stylesheet loaded from path: {}", stylesheetUri));
+                log.Debug(string.Concat("Stylesheet loaded from path: ", stylesheetUri));
             }
             catch (Exception ex)
             {
-                var message = string.Format("Error loading stylesheet from: {}", stylesheetUri);
+                var message = string.Concat("Error loading stylesheet from: ", stylesheetUri);
                 throw new XslLoadException(message, ex, stylesheetUri);
             }
         }
@@ -46,11 +46,11 @@ namespace IGilham.Xproc.Core
             try
             {
                 transform_.Transform(inPath, outPath);
-                log.Debug(string.Format("Successfully transformed {} to {}", inPath, outPath));
+                log.Debug(string.Format("Successfully transformed {0} to {1}", inPath, outPath));
             }
             catch (Exception ex)
             {
-                var message = string.Format("Error transforming XML. inPath={}, outPath={}", inPath, outPath);
+                var message = string.Format("Error transforming XML. inPath={0}, outPath={1}", inPath, outPath);
                 throw new XslTransformException(message, ex, inPath, outPath);
             }
         }

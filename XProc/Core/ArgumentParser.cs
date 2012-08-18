@@ -9,7 +9,7 @@ namespace IGilham.XProc
     /// <summary>
     /// A command line argument parser.
     /// </summary>
-    class ArgumentParser
+    public class ArgumentParser
     {
         private DirectoryInfo inputPath_;
         private DirectoryInfo outputPath_;
@@ -55,6 +55,10 @@ namespace IGilham.XProc
             try
             {
                 inputPath_ = new DirectoryInfo(args[1]);
+                if (!inputPath_.Exists)
+                {
+                    return false;
+                }
                 outputPath_ = new DirectoryInfo(args[2]);
                 stylesheet_ = new FileInfo(args[3]);
             }

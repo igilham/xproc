@@ -8,7 +8,7 @@
     <ProjectGuid>{645181CC-7828-428F-9287-AF054CB3CC74}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IGilham.XProc.CoreUnitTest</RootNamespace>
+    <RootNamespace>IGilham.XProc.UnitTest</RootNamespace>
     <AssemblyName>CoreUnitTest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentParserTest.cs" />
+    <Compile Include="TestUtilities.cs" />
     <Compile Include="XslTransformTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,8 +53,12 @@
     <Content Include="TestData\blank.xsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="TestData\Input\Catalog\catalog002.xml" />
-    <Content Include="TestData\Input\Catalog\catalog001.xml" />
+    <Content Include="TestData\Input\Catalog\catalog002.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="TestData\Input\Catalog\catalog001.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="TestData\Input\hello.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -62,6 +68,10 @@
     <ProjectReference Include="..\Core\IGilham.Xproc.Core.csproj">
       <Project>{A303AB8F-7A6A-4451-ACF4-32624ACB9D88}</Project>
       <Name>IGilham.Xproc.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XProc\IGilham.XProc.csproj">
+      <Project>{D1E05111-0688-4831-B684-9F35F9955FDE}</Project>
+      <Name>IGilham.XProc</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
