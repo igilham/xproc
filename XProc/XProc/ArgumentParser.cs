@@ -9,7 +9,7 @@ namespace IGilham.XProc
     /// <summary>
     /// A command line argument parser.
     /// </summary>
-    class Parameters
+    class ArgumentParser
     {
         private DirectoryInfo inputPath_;
         private DirectoryInfo outputPath_;

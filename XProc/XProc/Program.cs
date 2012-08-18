@@ -21,17 +21,17 @@ namespace IGilham.XProc
         /// <returns></returns>
         int Run(params string[] args)
         {
-            if(!parameters_.Parse(args))
+            if(!argParser_.Parse(args))
             {
-                Console.Error.WriteLine(parameters_.HelpMessage);
+                Console.Error.WriteLine(argParser_.HelpMessage);
                 return -1;
             }
-            var inputFiles = parameters_.InputPath.EnumerateFiles("*.xml");
+            var inputFiles = argParser_.InputPath.EnumerateFiles("*.xml");
             var batcher = new Batcher();
-            batcher.ProcessBatch(parameters_.Stylesheet, parameters_.OutputPath, inputFiles);
+            batcher.ProcessBatch(argParser_.Stylesheet, argParser_.OutputPath, inputFiles);
             return 0;
         }
 
-        private Parameters parameters_ = new Parameters();
+        private ArgumentParser argParser_ = new ArgumentParser();
     }
 }
