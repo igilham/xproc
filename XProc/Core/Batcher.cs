@@ -16,10 +16,10 @@ namespace IGilham.Xproc.Core
     {
         private readonly DirectoryInfo input_;
         private readonly DirectoryInfo output_;
-        private readonly string stylesheet_;
+        private readonly FileInfo stylesheet_;
 
         /// <summary>
-        /// Get the input directory
+        /// Get the input directory.
         /// </summary>
         public DirectoryInfo Input
         {
@@ -27,14 +27,17 @@ namespace IGilham.Xproc.Core
         }
 
         /// <summary>
-        /// Get the output directory
+        /// Get the output directory.
         /// </summary>
         public DirectoryInfo Output
         {
             get { return output_; }
         }
 
-        public string Stylesheet
+        /// <summary>
+        /// Get the stylesheet.
+        /// </summary>
+        public FileInfo Stylesheet
         {
             get { return stylesheet_; }
         }
@@ -45,7 +48,7 @@ namespace IGilham.Xproc.Core
         /// <param name="input">Input Directory</param>
         /// <param name="output">Output directory</param>
         /// <param name="stylesheetUri">URI to the stylesheet</param>
-        public Batcher(DirectoryInfo input, DirectoryInfo output, string stylesheetUri)
+        public Batcher(DirectoryInfo input, DirectoryInfo output, FileInfo stylesheetUri)
         {
             input_ = input;
             output_ = output;
@@ -63,7 +66,7 @@ namespace IGilham.Xproc.Core
             }
             var inFiles = Input.EnumerateFiles("*.xml");
             var transform = XslTransformerFactory.GetTransform();
-            transform.Load(stylesheet_);
+            transform.Load(stylesheet_.FullName);
             // TODO: implement a concurrent batching strategy
             foreach (var item in inFiles)
             {

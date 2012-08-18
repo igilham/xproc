@@ -4,3 +4,4 @@ syntax: glob
 XProc/*/bin
 XProc/*/obj
 XProc/*/*.csproj.user
+XProc/CoreUnitTest/TestResult.xml

@@ -14,6 +14,7 @@ namespace IGilham.XProc.CoreUnitTest
     {
         private static DirectoryInfo TestData = new DirectoryInfo("TestData");
         private static DirectoryInfo Input = new DirectoryInfo(Path.Combine(TestData.FullName, "Input"));
+        private static DirectoryInfo Expected = new DirectoryInfo(Path.Combine(TestData.FullName, "Expected"));
 
         private FileInfo GetTempFile(string extension)
         {
@@ -37,6 +38,7 @@ namespace IGilham.XProc.CoreUnitTest
         {
             Assert.IsTrue(TestData.Exists);
             Assert.IsTrue(Input.Exists);
+            Assert.IsTrue(Expected.Exists);
         }
 
         [Test]

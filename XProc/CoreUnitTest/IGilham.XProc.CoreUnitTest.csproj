@@ -44,7 +44,9 @@
     <Compile Include="XslTransformTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="TestData\Expected\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="TestData\blank.xsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
