@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\ian\code\bjss-interview01\XProc\Core\Core.csproj" total="1" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2012-08-18" time="10:50:26">
+  <environment nunit-version="2.6.1.12217" clr-version="2.0.50727.5456" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\ian\code\bjss-interview01\XProc\Core" machine-name="IAN-PC" user="ian" user-domain="ian-PC" />
+  <culture-info current-culture="en-GB" current-uiculture="en-US" />
+  <test-suite type="Project" name="C:\Users\ian\code\bjss-interview01\XProc\Core\Core.csproj" executed="True" result="Failure" success="False" time="0.471" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\Users\ian\code\bjss-interview01\XProc\Core\bin\Debug\Core.dll" executed="True" result="Failure" success="False" time="0.445" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="IGilham" executed="True" result="Failure" success="False" time="0.445" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Xproc" executed="True" result="Failure" success="False" time="0.445" asserts="0">
+                <results>
+                  <test-suite type="Namespace" name="Core" executed="True" result="Failure" success="False" time="0.444" asserts="0">
+                    <results>
+                      <test-suite type="Namespace" name="Test" executed="True" result="Failure" success="False" time="0.444" asserts="0">
+                        <results>
+                          <test-suite type="TestFixture" name="ClrXslTransformTest" executed="True" result="Failure" success="False" time="0.442" asserts="0">
+                            <results>
+                              <test-case name="IGilham.Xproc.Core.Test.ClrXslTransformTest.Math" executed="True" result="Failure" success="False" time="0.414" asserts="1">
+                                <failure>
+                                  <message><![CDATA[  Expected: 3
+  But was:  2
+]]></message>
+                                  <stack-trace><![CDATA[at IGilham.Xproc.Core.Test.ClrXslTransformTest.Math() in C:\Users\ian\code\bjss-interview01\XProc\Core\Test\ClrXslTransformTest.cs:line 15
+]]></stack-trace>
+                                </failure>
+                              </test-case>
+                            </results>
+                          </test-suite>
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
