@@ -13,6 +13,7 @@ namespace IGilham.Xproc.Core
         /// Load a stylesheet into the transformer.
         /// </summary>
         /// <param name="stylesheetUri">The URI string pointing to the file path of the XSL stylesheet.</param>
+        /// <exception cref="XslLoadException">If the given file cannot be loaded.</exception>
         void Load(string stylesheetUri);
 
         /// <summary>
@@ -20,6 +21,7 @@ namespace IGilham.Xproc.Core
         /// </summary>
         /// <param name="inPath">Input file path</param>
         /// <param name="outPath">Output file path</param>
+        /// <exception cref="XslTransformException">If there is an error processing the file.</exception>
         void Transform(string inPath, string outPath);
     }
 }

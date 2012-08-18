@@ -51,9 +51,12 @@
     <Content Include="TestData\blank.xsl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestData\Input\Catalog\catalog002.xml" />
+    <Content Include="TestData\Input\Catalog\catalog001.xml" />
     <Content Include="TestData\Input\hello.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="TestData\catalog.xsl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\IGilham.Xproc.Core.csproj">

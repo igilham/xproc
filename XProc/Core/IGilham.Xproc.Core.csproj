@@ -42,8 +42,10 @@
   <ItemGroup>
     <Compile Include="Batcher.cs" />
     <Compile Include="ClrXslTransform.cs" />
+    <Compile Include="Exceptions.cs" />
     <Compile Include="IXslTransformer.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="LoggerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XslTransformerFactory.cs" />
   </ItemGroup>

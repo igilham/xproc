@@ -10,13 +10,15 @@ using System.Xml.XPath;
 namespace IGilham.Xproc.Core
 {
     /// <summary>
-    /// Simple batch processor for XSL transforms
+    /// Simple batch processor for XSL transforms.
     /// </summary>
     public class Batcher
     {
         private readonly DirectoryInfo input_;
         private readonly DirectoryInfo output_;
         private readonly FileInfo stylesheet_;
+
+        #region public properties
 
         /// <summary>
         /// Get the input directory.
@@ -42,6 +44,8 @@ namespace IGilham.Xproc.Core
             get { return stylesheet_; }
         }
 
+        #endregion
+
         /// <summary>
         /// Create a new batcher
         /// </summary>
@@ -65,14 +69,31 @@ namespace IGilham.Xproc.Core
                 Output.Create();
             }
             var inFiles = Input.EnumerateFiles("*.xml");
-            var transform = XslTransformerFactory.GetTransform();
-            transform.Load(stylesheet_.FullName);
-            // TODO: implement a concurrent batching strategy
-            foreach (var item in inFiles)
+            var transform = XslTransformerFactory.GetTransformer();
+            try
             {
-                var outPath = Path.Combine(Output.FullName, item.Name);
-                transform.Transform(item.FullName, outPath);
+                transform.Load(stylesheet_.FullName);
             }
+            catch (XProcException e)
+            {
+                LoggerService.GetLogger().Error(e.Message);
+                throw;
+            }
+
+            // The problem of processing multiple documents is embarrasingly parallel
+            // so the simple Parallel.ForEach API should be able to do a better job 
+            // than I can in much less code.
+            Parallel.ForEach<FileInfo>(inFiles, (x) => {
+                var outPath = Path.Combine(Output.FullName, x.Name);
+                try
+                {
+                    transform.Transform(x.FullName, outPath);
+                }
+                catch (XProcException e)
+                {
+                    LoggerService.GetLogger().Error(e.Message);
+                }
+            });
         }
 
     }

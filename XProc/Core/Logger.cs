@@ -48,6 +48,15 @@ namespace IGilham.Xproc.Core
 #endif
 
         /// <summary>
+        /// Default constructor.
+        /// </summary>
+        /// <remarks>This is marked internal to prevent the logger
+        /// from being instantiated by client applications.</remarks>
+        internal Logger() { }
+
+        #region public logger API
+
+        /// <summary>
         /// Get or set the log level
         /// </summary>
         public LogLevel Level
@@ -107,6 +116,8 @@ namespace IGilham.Xproc.Core
                 Log(prefix, message);
             }
         }
+
+        #endregion
 
         private void Log(string prefix, string message)
         {

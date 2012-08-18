@@ -44,7 +44,7 @@ namespace IGilham.XProc.CoreUnitTest
         [Test]
         public void EnsureBlankStylesheetDoesNothing()
         {
-            var tran = XslTransformerFactory.GetTransform();
+            var tran = XslTransformerFactory.GetTransformer();
             tran.Load(Path.Combine(TestData.FullName, "blank.xsl"));
             var input = new FileInfo(Path.Combine(Input.FullName, "hello.xml"));
             var result = GetTempFile("xml");
