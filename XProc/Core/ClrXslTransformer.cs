@@ -7,7 +7,7 @@ namespace IGilham.XProc.Core
     /// <summary>
     /// A simple class wrapping the standard .Net library XSL transform API.
     /// </summary>
-    public class ClrXslTransform : IXslTransformer
+    public class ClrXslTransformer : IXslTransformer
     {
         private XslCompiledTransform transform_ = new XslCompiledTransform();
 
@@ -20,7 +20,7 @@ namespace IGilham.XProc.Core
         /// lead to race conditions
         /// </remarks>
         /// <exception cref="XslLoadException">If the given file cannot be loaded.</exception>
-        public ClrXslTransform(FileInfo stylesheet)
+        public ClrXslTransformer(FileInfo stylesheet)
         {
             var log = LoggerService.GetLogger();
             try

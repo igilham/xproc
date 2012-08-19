@@ -21,7 +21,7 @@ namespace IGilham.XProc.UnitTest
         [Test]
         public void EnsureBlankStylesheetDoesNothing()
         {
-            var tran = new ClrXslTransform(TestUtilities.BlankXsl);
+            var tran = new ClrXslTransformer(TestUtilities.BlankXsl);
             var input = new FileInfo(Path.Combine(TestUtilities.Input.FullName, "hello.xml"));
             var result = TestUtilities.GetTempFile("xml");
             tran.Transform(input.FullName, result.FullName);

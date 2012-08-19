@@ -27,7 +27,7 @@ namespace IGilham.XProc
                 return -1;
             }
             var inputFiles = argParser_.InputPath.EnumerateFiles("*.xml");
-            var batcher = new Batcher(new ClrXslTransform(argParser_.Stylesheet));
+            var batcher = new Batcher(new ClrXslTransformer(argParser_.Stylesheet));
             batcher.ProcessBatch(argParser_.OutputPath, inputFiles);
             return 0;
         }

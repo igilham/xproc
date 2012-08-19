@@ -51,7 +51,7 @@ namespace IGilham.XProc.UnitTest
             DeleteOutputDir();
             var inFiles = TestUtilities.Catalog.EnumerateFiles("*.xml");
             Assert.IsNotEmpty(inFiles, "No catalog xml files found");
-            var batcher = new Batcher(new ClrXslTransform(TestUtilities.CatalogXsl));
+            var batcher = new Batcher(new ClrXslTransformer(TestUtilities.CatalogXsl));
             batcher.ProcessBatch(TestUtilities.Output, inFiles);
             var outFiles = TestUtilities.Output.EnumerateFiles("*.xml");
             Assert.AreEqual(inFiles.Count(),  outFiles.Count(),
