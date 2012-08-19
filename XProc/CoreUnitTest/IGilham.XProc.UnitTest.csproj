@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ArgumentParserTest.cs" />
     <Compile Include="BatcherTest.cs" />
+    <Compile Include="MockXslTransformer.cs" />
     <Compile Include="TestUtilities.cs" />
     <Compile Include="XslTransformTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

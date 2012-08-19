@@ -15,6 +15,19 @@ namespace IGilham.XProc.Core
     public class Batcher
     {
         /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <remarks>
+        /// The IXslTransformer dependency is injected to make it easier to
+        /// switch XSLT library.
+        /// </remarks>
+        /// <param name="transformer">Transformer to use for batch processing.</param>
+        public Batcher(IXslTransformer transformer)
+        {
+            this.transformer_ = transformer;
+        }
+
+        /// <summary>
         /// Batch process files using an XSL transformer.
         /// </summary>
         /// <param name="stylesheet">The stylesheet to use for the batch transform.</param>
@@ -36,10 +49,9 @@ namespace IGilham.XProc.Core
                     throw;
                 }
             }
-            var transform = XslTransformerFactory.GetTransformer();
             try
             {
-                transform.Load(stylesheet.FullName);
+                transformer_.Load(stylesheet.FullName);
             }
             catch (XslLoadException e)
             {
@@ -55,7 +67,7 @@ namespace IGilham.XProc.Core
                 var outPath = Path.Combine(outputDir.FullName, currentFile.Name);
                 try
                 {
-                    transform.Transform(currentFile.FullName, outPath);
+                    transformer_.Transform(currentFile.FullName, outPath);
                 }
                 catch (XProcException e)
                 {
@@ -64,5 +76,7 @@ namespace IGilham.XProc.Core
             });
         }
 
+
+        private IXslTransformer transformer_;
     }
 }
