@@ -47,8 +47,10 @@ namespace IGilham.XProc.Core
         /// <summary>
         /// Default constructor.
         /// </summary>
-        /// <remarks>This is marked internal to prevent the logger
-        /// from being instantiated by client applications.</remarks>
+        /// <remarks>
+        /// This is marked internal to prevent the logger from being instantiated by 
+        /// client applications. Use LoggerService to acquire a Logger
+        /// </remarks>
         internal Logger() { }
 
         #region public logger API
