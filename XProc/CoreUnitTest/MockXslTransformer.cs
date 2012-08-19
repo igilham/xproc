@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.IO;
 using IGilham.XProc.Core;
 
 namespace IGilham.XProc.UnitTest
@@ -13,10 +11,10 @@ namespace IGilham.XProc.UnitTest
     {
         #region IXslTransformer
         
-        public void Load(string stylesheetUri)
+        public MockXslTransformer(FileInfo stylesheet)
         {
             stylesheetLoaded_ = true;
-            stylesheetUri_ = stylesheetUri;
+            stylesheetUri_ = stylesheet.FullName;
         }
 
         public void Transform(string inPath, string outPath)

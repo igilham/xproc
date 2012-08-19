@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
-using NUnit.Framework;
 using IGilham.XProc.Core;
-using System.IO;
+using NUnit.Framework;
 
 namespace IGilham.XProc.UnitTest
 {
@@ -17,23 +14,12 @@ namespace IGilham.XProc.UnitTest
     public class BatcherTest
     {
         [Test]
-        public void EnsureStylesheetIsLoaded()
-        {
-            var transformer = new MockXslTransformer();
-            var batcher = new Batcher(transformer);
-            batcher.ProcessBatch(TestUtilities.CatalogXsl, TestUtilities.Output, TestUtilities.Catalog.EnumerateFiles());
-            Assert.That(transformer.StylesheetLoaded, "IXslTransformer.Load() was not called");
-            Assert.AreEqual(TestUtilities.CatalogXsl.FullName, transformer.StylesheetUri, 
-                "given and received stylesheet paths differ");
-        }
-
-        [Test]
         public void EnsureAllFilesProcessed()
         {
-            var transformer = new MockXslTransformer();
+            var transformer = new MockXslTransformer(TestUtilities.CatalogXsl);
             var batcher = new Batcher(transformer);
             var files = TestUtilities.Catalog.EnumerateFiles();
-            batcher.ProcessBatch(TestUtilities.CatalogXsl, TestUtilities.Output, files);
+            batcher.ProcessBatch(TestUtilities.Output, files);
             Assert.AreEqual(files.Count(), transformer.TransformCalledCount,
                 "IXslTransformer.Transform() was not called for all input files");
             foreach (var file in files)
@@ -51,8 +37,8 @@ namespace IGilham.XProc.UnitTest
         {
             DeleteOutputDir();
             Assert.IsFalse(TestUtilities.Output.Exists, "Output directory exists");
-            var batcher = new Batcher(new MockXslTransformer());
-            batcher.ProcessBatch(TestUtilities.CatalogXsl, TestUtilities.Output, TestUtilities.Catalog.EnumerateFiles());
+            var batcher = new Batcher(new MockXslTransformer(TestUtilities.CatalogXsl));
+            batcher.ProcessBatch(TestUtilities.Output, TestUtilities.Catalog.EnumerateFiles());
             Assert.That(TestUtilities.Catalog.Exists, "Output directory not created");
         }
 
@@ -65,8 +51,8 @@ namespace IGilham.XProc.UnitTest
             DeleteOutputDir();
             var inFiles = TestUtilities.Catalog.EnumerateFiles("*.xml");
             Assert.IsNotEmpty(inFiles, "No catalog xml files found");
-            var batcher = new Batcher(XslTransformerFactory.GetTransformer());
-            batcher.ProcessBatch(TestUtilities.CatalogXsl, TestUtilities.Output, inFiles);
+            var batcher = new Batcher(new ClrXslTransform(TestUtilities.CatalogXsl));
+            batcher.ProcessBatch(TestUtilities.Output, inFiles);
             var outFiles = TestUtilities.Output.EnumerateFiles("*.xml");
             Assert.AreEqual(inFiles.Count(),  outFiles.Count(),
                 "Input and output file counts differ");

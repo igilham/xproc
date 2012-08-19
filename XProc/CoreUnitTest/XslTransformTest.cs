@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
-using IGilham.XProc;
-using NUnit.Framework;
+﻿using System.IO;
 using IGilham.XProc.Core;
+using NUnit.Framework;
 
 namespace IGilham.XProc.UnitTest
 {
@@ -26,8 +21,7 @@ namespace IGilham.XProc.UnitTest
         [Test]
         public void EnsureBlankStylesheetDoesNothing()
         {
-            var tran = XslTransformerFactory.GetTransformer();
-            tran.Load(Path.Combine(TestUtilities.TestData.FullName, "blank.xsl"));
+            var tran = new ClrXslTransform(TestUtilities.BlankXsl);
             var input = new FileInfo(Path.Combine(TestUtilities.Input.FullName, "hello.xml"));
             var result = TestUtilities.GetTempFile("xml");
             tran.Transform(input.FullName, result.FullName);

@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
-using IGilham.XProc.Core;
 using System.IO;
+using IGilham.XProc.Core;
+using NUnit.Framework;
 
 namespace IGilham.XProc.UnitTest
 {

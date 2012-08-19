@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Xml;
+using System.IO;
 using System.Xml.Xsl;
 
 namespace IGilham.XProc.Core
@@ -15,22 +12,26 @@ namespace IGilham.XProc.Core
         private XslCompiledTransform transform_ = new XslCompiledTransform();
 
         /// <summary>
-        /// Load a stylesheet into the transformer.
+        /// Constructor.
         /// </summary>
-        /// <param name="stylesheetUri">The URI string pointing to the file path of the XSL stylesheet.</param>
+        /// <param name="stylesheet">The XSL stylesheet to use for transforms.</param>
+        /// <remarks>
+        /// stylesheet is set in the constructor to ensure that it does not
+        /// lead to race conditions
+        /// </remarks>
         /// <exception cref="XslLoadException">If the given file cannot be loaded.</exception>
-        public void Load(string stylesheetUri)
+        public ClrXslTransform(FileInfo stylesheet)
         {
             var log = LoggerService.GetLogger();
             try
             {
-                transform_.Load(stylesheetUri);
-                log.Debug(string.Concat("Stylesheet loaded from path: ", stylesheetUri));
+                transform_.Load(stylesheet.FullName);
+                log.Debug(string.Concat("Stylesheet loaded from path: ", stylesheet));
             }
             catch (Exception ex)
             {
-                var message = string.Concat("Error loading stylesheet from: ", stylesheetUri);
-                throw new XslLoadException(message, ex, stylesheetUri);
+                var message = string.Concat("Error loading stylesheet from: ", stylesheet.FullName);
+                throw new XslLoadException(message, ex, stylesheet.FullName);
             }
         }
 
