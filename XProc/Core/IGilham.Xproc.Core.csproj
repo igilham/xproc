@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="ArgumentParser.cs" />
     <Compile Include="Batcher.cs" />
-    <Compile Include="ClrXslTransform.cs" />
+    <Compile Include="ClrXslTransformer.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="IXslTransformer.cs" />
     <Compile Include="Logger.cs" />
