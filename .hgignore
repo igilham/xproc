@@ -5,3 +5,5 @@ XProc/*/bin
 XProc/*/obj
 XProc/*/*.csproj.user
 XProc/CoreUnitTest/TestResult.xml
+XProc/CoreUnitTest/TestData/Input/Catalog/catalog*.xml
+!XProc/CoreUnitTest/TestData/Input/Catalog/catalog0.xml

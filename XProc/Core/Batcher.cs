@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace IGilham.XProc.Core
@@ -125,7 +126,7 @@ namespace IGilham.XProc.Core
         /// <param name="files">The files to batch process.</param>
         private void ProcessBatchFiles(DirectoryInfo outputDir, IEnumerable<FileInfo> files)
         {
-            Parallel.ForEach(files, currentFile =>
+            var result = Parallel.ForEach(files, currentFile =>
             {
                 var outPath = Path.Combine(outputDir.FullName, currentFile.Name);
                 try
@@ -138,6 +139,11 @@ namespace IGilham.XProc.Core
                     log_.Error(e.Message);
                 }
             });
+            // wait for processing to finish
+            while (!result.IsCompleted)
+            {
+                Thread.Sleep(150);
+            }
         }
 
         /// <summary>

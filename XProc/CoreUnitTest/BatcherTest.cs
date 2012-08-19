@@ -2,6 +2,7 @@
 using System.Linq;
 using IGilham.XProc.Core;
 using NUnit.Framework;
+using System.Threading;
 
 namespace IGilham.XProc.UnitTest
 {
@@ -22,10 +23,14 @@ namespace IGilham.XProc.UnitTest
             batcher.ProcessBatch(TestUtilities.Output, files);
             Assert.AreEqual(files.Count(), transformer.TransformCalledCount,
                 "IXslTransformer.Transform() was not called for all input files");
+
+            // The filesystem bug rears it's head here as well.
+            // If the test fails here, it only seems to indicate that the filesystem hasn't caught up with us yet.
+            // A manual check confirms that the correct behaviour has happened.
             foreach (var file in files)
             {
                 Assert.That(transformer.Files.ContainsKey(file.FullName), 
-                    string.Concat("file not found in output: ", file.FullName));
+                    string.Concat("file not yet processed: ", file.FullName));
             }
         }
 
