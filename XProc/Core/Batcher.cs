@@ -129,10 +129,11 @@ namespace IGilham.XProc.Core
             var result = Parallel.ForEach(files, currentFile =>
             {
                 var outPath = Path.Combine(outputDir.FullName, currentFile.Name);
+                var targetFile = new FileInfo(outPath);
                 try
                 {
                     log_.Debug(string.Concat("Transforming ", currentFile.FullName, " to ", outPath));
-                    transformer_.Transform(currentFile.FullName, outPath);
+                    transformer_.Transform(currentFile, targetFile);
                 }
                 catch (XProcException e)
                 {

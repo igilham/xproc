@@ -17,10 +17,10 @@ namespace IGilham.XProc.UnitTest
             stylesheetUri_ = stylesheet.FullName;
         }
 
-        public void Transform(string inPath, string outPath)
+        public void Transform(FileInfo source, FileInfo target)
         {
             ++transformCalledCount_;
-            files_.Add(inPath, outPath);
+            files_.Add(source.FullName, target.FullName);
         }
         
         #endregion

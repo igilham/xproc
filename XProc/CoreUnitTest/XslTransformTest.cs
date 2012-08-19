@@ -24,7 +24,7 @@ namespace IGilham.XProc.UnitTest
             var tran = new ClrXslTransformer(TestUtilities.BlankXsl);
             var input = new FileInfo(Path.Combine(TestUtilities.Input.FullName, "hello.xml"));
             var result = TestUtilities.GetTempFile("xml");
-            tran.Transform(input.FullName, result.FullName);
+            tran.Transform(input, result);
             Assert.AreEqual(input.Length, result.Length, "File lengths differ");
             var expectedText = TestUtilities.GetText(input);
             var resultText = TestUtilities.GetText(result);

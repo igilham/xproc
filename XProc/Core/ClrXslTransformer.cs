@@ -38,12 +38,14 @@ namespace IGilham.XProc.Core
         /// <summary>
         /// Transform inPath to outPath using the stylesheet.
         /// </summary>
-        /// <param name="inPath">Input file path</param>
-        /// <param name="outPath">Output file path</param>
+        /// <param name="source">Source file</param>
+        /// <param name="target">Target file</param>
         /// <exception cref="XslTransformException">If there is an error processing the file.</exception>
-        public void Transform(string inPath, string outPath)
+        public void Transform(FileInfo source, FileInfo target)
         {
             var log = LoggerService.GetLogger();
+            var inPath = source.FullName;
+            var outPath = target.FullName;
             try
             {
                 transform_.Transform(inPath, outPath);

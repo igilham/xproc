@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace IGilham.XProc.Core
 {
@@ -10,6 +11,6 @@ namespace IGilham.XProc.Core
         /// <param name="inPath">Input file path</param>
         /// <param name="outPath">Output file path</param>
         /// <exception cref="XslTransformException">If there is an error processing the file.</exception>
-        void Transform(string inPath, string outPath);
+        void Transform(FileInfo source, FileInfo target);
     }
 }
