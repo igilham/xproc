@@ -38,7 +38,8 @@ namespace IGilham.XProc.Core
         {
             get
             {
-                return "Usage: XProc INPUT_DIR OUTPUT_DIR STYLESHEET";
+                return "Usage: XProc INPUT_DIR OUTPUT_DIR STYLESHEET\n" +
+                    "    Where INPUT_DIR and OUTPUT_DIR are different locations";
             }
         }
 
@@ -68,6 +69,12 @@ namespace IGilham.XProc.Core
                 }
                 outputPath_ = new DirectoryInfo(args[1]);
                 stylesheet_ = new FileInfo(args[2]);
+
+                // prevent overwriting the source files with the target files
+                if (inputPath_.FullName == outputPath_.FullName)
+                {
+                    return false;
+                }
             }
             catch (IOException e)
             {
