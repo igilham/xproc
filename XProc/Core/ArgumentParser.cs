@@ -1,10 +1,15 @@
 ﻿using System.IO;
+using System;
 
 namespace IGilham.XProc.Core
 {
     /// <summary>
-    /// A command line argument parser.
+    /// A very simple command line argument parser.
     /// </summary>
+    /// <remarks>
+    /// This is in the Core dll because of a compiler limitation. The executable cannot be compiled as
+    /// platform-independent, so crossing the dll boundary would generate warnings when trying to test this class.
+    /// </remarks>
     public class ArgumentParser
     {
         private DirectoryInfo inputPath_;
@@ -45,21 +50,24 @@ namespace IGilham.XProc.Core
         public bool Parse(params string[] args)
         {
             var log = LoggerService.GetLogger();
-            if (args.Length != 4)
+            log.Debug(string.Concat("Parsing command line arguments", string.Join(", ", args)));
+            const int expectedArguments = 3;
+
+            if (args.Length != expectedArguments)
             {
-                log.Error("Incorrect argument count while parsing the command line");
+                log.Error("Incorrect argument count while parsing the command line. Expected " + expectedArguments);
                 return false;
             }
             try
             {
-                inputPath_ = new DirectoryInfo(args[1]);
+                inputPath_ = new DirectoryInfo(args[0]);
                 if (!inputPath_.Exists)
                 {
                     log.Error(string.Concat("No such directory: ", inputPath_.FullName));
                     return false;
                 }
-                outputPath_ = new DirectoryInfo(args[2]);
-                stylesheet_ = new FileInfo(args[3]);
+                outputPath_ = new DirectoryInfo(args[1]);
+                stylesheet_ = new FileInfo(args[2]);
             }
             catch (IOException e)
             {

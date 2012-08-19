@@ -19,14 +19,14 @@ namespace IGilham.XProc.UnitTest
         public void ParseWithThreeArgsReturnsFalse()
         {
             var parser = new ArgumentParser();
-            Assert.IsFalse(parser.Parse("app.exe", TestUtilities.Input.FullName, TestUtilities.Output.FullName), "Parse returned true");
+            Assert.IsFalse(parser.Parse(TestUtilities.Input.FullName, TestUtilities.Output.FullName), "Parse returned true");
         }
 
         [Test]
         public void ParseWithFakeDirectoryArgsReturnsFalse()
         {
             var parser = new ArgumentParser();
-            Assert.IsFalse(parser.Parse("app.exe",
+            Assert.IsFalse(parser.Parse(
                 Path.Combine(TestUtilities.Input.FullName, Guid.NewGuid().ToString()),
                 Path.Combine(TestUtilities.Output.FullName, Guid.NewGuid().ToString()),
                 TestUtilities.BlankXsl.FullName), "Parse returned true");
@@ -36,7 +36,7 @@ namespace IGilham.XProc.UnitTest
         public void ParseWithCorrectArgs()
         {
             var parser = new ArgumentParser();
-            Assert.IsTrue(parser.Parse("app.exe",
+            Assert.IsTrue(parser.Parse(
                 TestUtilities.Input.FullName,
                 TestUtilities.Output.FullName,
                 TestUtilities.BlankXsl.FullName), "Parse returned false");

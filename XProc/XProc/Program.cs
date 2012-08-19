@@ -11,6 +11,7 @@ namespace IGilham.XProc
     {
         static int Main(string[] args)
         {
+            Console.WriteLine("starting up");
             Program prog = new Program();
             return prog.Run(args);
         }
