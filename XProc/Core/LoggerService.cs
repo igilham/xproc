@@ -8,7 +8,7 @@ namespace IGilham.XProc.Core
     /// </summary>
     public static class LoggerService
     {
-        private static Logger logger_;
+        private static Logger logger_ = new Logger();
 
         /// <summary>
         /// Get a logger.
@@ -16,10 +16,6 @@ namespace IGilham.XProc.Core
         /// <returns>The Application's logger.</returns>
         public static Logger GetLogger()
         {
-            if (logger_ == null)
-            {
-                logger_ = new Logger();
-            }
             return logger_;
         }
     }

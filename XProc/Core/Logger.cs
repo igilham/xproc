@@ -36,6 +36,8 @@ namespace IGilham.XProc.Core
     /// <summary>
     /// A simple console logger.
     /// </summary>
+    /// <remarks>I rolled my own to save time fiddling with a framework.
+    /// Besides, the problem scope does not require anything clever.</remarks>
     public class Logger
     {
 #if DEBUG

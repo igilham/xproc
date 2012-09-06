@@ -85,10 +85,12 @@ namespace IGilham.XProc.Core
 
         protected virtual void OnBatchCompleted()
         {
-            if (BatchCompleted != null)
+            // take a copy to prevent NullReferenceException in case of event unsubscription.
+            var handler = BatchCompleted;
+            if (handler != null)
             {
                 log_.Debug("Firing BatchCompleted event");
-                BatchCompleted(this, new EventArgs());
+                handler(this, new EventArgs());
             }
             else
             {
